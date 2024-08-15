@@ -1,0 +1,25 @@
+<div id="timerContainer" style="display:flex;justify-content:center;align-item:center">
+  <div style="text-align: center; padding: 0.25rem 1rem;border-radius:1rem; color: white; background: linear-gradient(to right, #FF7E5F, #FEB47B);">
+    <div id="message">Please wait <span id="timer" style="display: inline-block; border-radius: 12px;">10</span> seconds...</div>
+  </div>
+</div>
+
+<script>
+  let countdown = 10;
+  const timerElement = document.getElementById('timer');
+  const messageElement = document.getElementById('message');
+
+  function updateTimer() {
+      countdown--;
+      timerElement.textContent = countdown;
+      if (countdown <= 0) {
+          clearInterval(timerInterval);
+          messageElement.innerHTML = ''; // Ensure message is updated correctly
+          document.getElementById("timerContainer").style.display = 'none';
+          document.getElementById("timeOutButton").style.display = 'block';
+          document.getElementById("continueButton").style.display = 'block';
+      }
+  }
+
+  const timerInterval = setInterval(updateTimer, 1000);
+</script>
